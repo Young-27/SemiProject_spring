@@ -21,7 +21,7 @@
         margin:0;
         padding:0;
         text-decoration:none;
-        background-color: lightgray;
+        border: 1px solid lightgray;
     }
     #ad_nav1>li{
         list-style-type: none;
@@ -52,7 +52,7 @@
     }
 
     #ad_nav1 a:hover{
-        background: rgb(127, 127, 127);
+        background-color: rgb(187, 208, 227);
     }
     
     #ad_nav1>li>a:hover+ul{display:block;}
@@ -65,34 +65,42 @@
 		<br>
         <div data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="" spellcheck="false" align="center">통합관리</div>
         <ul id="ad_nav1">
-            <li><a href="/conimal/list.me?currentPage=1">회원조회</a></li>
-            <li><a href="/conimal/list.re?currentPage=1">신고조회</a></li>
+            <li><a href="list.me?currentPage=1">회원조회</a></li>
+            <li><a href="list.re?currentPage=1">신고조회</a></li>
             <li>
-                <a href="/conimal/Main.sh?currentPage=1">보호소 관리</a>
+                <a href="Main.sh?currentPage=1">보호소 관리</a>
                 <ul>
-                    <li><a href="/conimal/Main.sh?currentPage=1">보호소 등록 관리</a></li>
-                    <li><a href="/conimal/Main.do?currentPage=1">후원 등록 관리</a></li>
+                    <li><a href="Main.sh?currentPage=1">보호소 등록 관리</a></li>
+                    <li><a href="Main.do?currentPage=1">후원 등록 관리</a></li>
                 </ul>
             </li>
 
             <li>
-                <a href="/conimal/Main.intro">사이트소개 관리</a>
+                <a href="Main.intro">사이트소개 관리</a>
                 <ul>
-                    <li><a href="/conimal/Main.intro">사이트 소개</a></li>
-                    <li><a href="/conimal/Main.no?currentPage=1">공지사항</a></li>
+                    <li><a href="Main.intro">사이트 소개</a></li>
+                    <li><a href="Main.no?currentPage=1">공지사항</a></li>
                 </ul>
             </li>
             <li>
-                <a href="/conimal/list.bo?currentPage=1">게시판 관리</a>
+                <a href="list.bo?currentPage=1">게시판 관리</a>
                 <ul>
-                    <li><a href="/conimal/list.bo?currentPage=1">게시판 글 조회</a></li>
-                    <li><a href="/conimal/list.ca?currentPage=1">1:1 문의</a></li>
+                    <li><a href="list.bo?currentPage=1">게시판 글 조회</a></li>
+                    <li><a href="list.ca?currentPage=1">1:1 문의</a></li>
                 </ul>
             </li>
             
         </ul>
     </div>
-
+	
+	<script>
+		$(function(){
+			$("#ad_nav1>li>a>ul>li").hover(function(){
+				$(this).parent().css("background-color", rgb(187, 208, 227));
+				console.log("hover");
+			})
+		})
+	</script>
 
 	
 	

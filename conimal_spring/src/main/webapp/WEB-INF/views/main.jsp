@@ -29,7 +29,6 @@
     .extitle{
         height: 13%;
         color: rgb(94, 94, 94);
-        font-family: HanSans; 
         font-weight: bold;
         text-align: left; 
         width: 100%;
@@ -57,26 +56,29 @@
     }
         
     .more>button{
-    font-size: 16px; 
-    color: rgb(255, 255, 255); 
-    text-align: center; 
-    line-height: 2.5em; 
-    border-radius: 4px; 
-    background-color: rgb(127, 127, 127);
-    border:0px;
-    margin-right: 62px;
+	    font-size: 16px; 
+	    color: rgb(255, 255, 255); 
+	    text-align: center; 
+	    line-height: 2.5em; 
+	    border-radius: 4px; 
+	    background-color: rgb(127, 127, 127);
+	    border:0px;
+	    margin-right: 62px;
     }
     .product-title {
-    text-align:center;
-    display:table;
-    border:1px solid #cecece;
-    width:280px;
-    height:250px;
-}
-
-.banner{
-	float:right;
-}
+	    text-align:center;
+	    display:table;
+	    border:1px solid #cecece;
+	    width:280px;
+	    height:250px;
+	}
+	
+	/* 새로운 배너 설정 */
+	.banner{text-align:left}
+	.mySlides {display:none}
+	.w3-left, .w3-right, .w3-badge {cursor:pointer;}
+	.w3-badge {height:15px;width:15px;padding:0;}
+	.w3-button{top: -700% !important;}
 </style>
 </head>
 
@@ -85,9 +87,50 @@
 	<jsp:include page="common/header.jsp"/>
 	
 	<div class="outer">
-		<div class="imgsilde">
-			<img src="resources/images/5.jpg" class="img1" width= "1200px"  height= "400px" >
+		<br>
+		<div class="w3-content w3-display-container banner" style="max-width:1000px;/*  height:300px; */">
+			<img class="mySlides" src="resources/images/5772177.jpg" style="width:100%; height:450px;">
+			<img class="mySlides" src="resources/images/5199738.jpg" style="width:100%; height:450px;">
+			<img class="mySlides" src="resources/images/5.jpg" style="width:100%; height:450px;">
+			<div class="w3-center w3-container w3-section w3-large w3-display-bottommiddle" style="width:100%">
+			    <div class="w3-button w3-dark-gray w3-display-left" onclick="plusDivs(-1)">&#10094;</div>
+			    <div class="w3-button w3-dark-gray w3-display-right" onclick="plusDivs(1)">&#10095;</div>
+				<span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+			    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+			    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+			</div>
+			<a href='https://kr.freepik.com/psd/banner' align="center">Banner psd는 freepik - kr.freepik.com가 제작함</a>
 		</div>
+		
+		
+		<script>
+			var slideIndex = 1;
+			showDivs(slideIndex);
+			
+			function plusDivs(n) {
+			  showDivs(slideIndex += n);
+			}
+			
+			function currentDiv(n) {
+			  showDivs(slideIndex = n);
+			}
+			
+			function showDivs(n) {
+			  var i;
+			  var x = document.getElementsByClassName("mySlides");
+			  var dots = document.getElementsByClassName("demo");
+			  if (n > x.length) {slideIndex = 1}
+			  if (n < 1) {slideIndex = x.length}
+			  for (i = 0; i < x.length; i++) {
+			    x[i].style.display = "none";  
+			  }
+			  for (i = 0; i < dots.length; i++) {
+			    dots[i].className = dots[i].className.replace(" w3-dark-gray", "");
+			  }
+			  x[slideIndex-1].style.display = "block";  
+			  dots[slideIndex-1].className += " w3-dark-gray";
+			}
+		</script>
 	<%-- <% if(memcode==1){ %>
 		<button onclick="location.href='<%=contextPath%>/bannerUpdateForm.main'" class="banner btn btn-secondary">배너 수정</button>
 	<% }%> --%>

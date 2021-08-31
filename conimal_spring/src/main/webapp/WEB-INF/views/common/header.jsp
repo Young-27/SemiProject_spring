@@ -14,8 +14,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
-    .outer{width: 1200px; margin: auto;  font-family:'Noto Sans KR', sans-serif; }
+    .outer{
+    	width: 1200px; 
+    	margin: auto;  
+	}
+	body{font-family: 'NEXON Lv1 Gothic OTF';}
+	@font-face {
+	    font-family: 'NEXON Lv1 Gothic OTF';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
     .on{
          width: 1200px;
          height: 180px;         
@@ -88,7 +99,6 @@
             line-height: 2.8em; 
             font-size: 20px; 
             color: rgb(110, 109, 109);
-            font-family: HanSans; 
             width: 16.6%;   
             font-weight: bold; 
             cursor:pointer;
@@ -105,7 +115,6 @@
             margin-top:0px;
             padding:10px;
             background-color: rgb(184, 183, 183); 
-            font-family: HanSans;            
             line-height: 2.8em; 
             font-size: 20px;
             position: relative;
@@ -133,7 +142,7 @@
 		<c:remove var="alertMsg" scope="session"/>	
 	</c:if>
 	<div class="on">
-		<image src="resources/images/mainLogo.png" width="558px" height="120px" class="mainLogo">
+		<image onclick="location.href='${ pageContext.request.contextPath }'" src="resources/images/mainLogo.png" width="558px" height="120px" class="mainLogo">
 		<c:choose>
 			<c:when test="${ loginUser eq null }">
 				<div class="login" align="center">
