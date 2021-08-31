@@ -6,23 +6,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
-
- .footerbar{
-        
+ 	.footerbar{
          width: 1200px;
-         height: 180px;
+         height: 200px;
          margin: 0 auto;
+         float:left;
      }
      .call{
          width:30%;
          height: 100%;
          float:left;
-         margin-left: 60px;
      }
 
      .minLogo{
-                 
          padding-top: 30px;
          height: 100%;
          float:left;  
@@ -34,13 +30,9 @@
         padding-top: 25px; 
     }
      .ect{
-        
         font-size: 13px; 
         color: rgb(127, 127, 127);
-        text-align: left;
-        width:450px;
-        padding-left: 60px;
-       
+        text-align: center;
      }
      .ect2{
         font-weight: bold; font-size: 24px; text-align: center; color: rgb(94, 94, 94);
@@ -50,16 +42,19 @@
      }
      #al{                   
         width: 250px;
-        padding-left: 125px;   
+        text-align: center;
+        margin: 0;
      }
      
     
 </style>
 </head>
 <body> 
-            <hr>
-            <br>
+            
+            
             <div class="footerbar">
+            <br>
+            <hr>
             <div class="minLogo">
                 <div>
                  <image src="resources/images/mainLogo.png" width="300" height="60"></image>
@@ -80,18 +75,18 @@
 
             <div class="call">
                 <div class="ect2" >
-                    고객센터
+                   	 고객센터
                     <div class="ect3">
-                    1235-9876
-                                        
+	                    1235-9876
+	                    <div style="font-size: 13px; color: rgb(127, 127, 127); text-align: center;">                    
+	                    	평일 : 10:00-16:00<br>
+					                  점심시간 : 13:00-14:00<br>
+		                    (토/일/공휴일은 휴뮤입니다.)  
+	                	</div>
                     </div>
                 </div>
 
-                <div class="ect" id="al">                    
-                    평일 : 10:00-16:00<br>
-                    점심시간 : 13:00-14:00<br>
-                    (토/일/공휴일은 휴뮤입니다.)                    
-                </div>
+                
 
             </div>
             </div>

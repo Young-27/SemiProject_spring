@@ -7,14 +7,9 @@
 <title>Insert title here</title>
 <style>
     .admin_nav{
-    	margin: auto;
         width: 200px;
         box-sizing: border-box;
-        float:left;
-        margin:100px;
-        margin-top:200px;
-        
-        position: absolute;
+        float: left;
     }
 
     .admin_nav>h2{
@@ -62,8 +57,6 @@
     
     #ad_nav1>li>a:hover+ul{display:block;}
     #ad_nav1>li>ul:hover{display:block;}
-    
-
 
 </style>
 </head>
@@ -72,7 +65,6 @@
 		<br>
         <div data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="" spellcheck="false" align="center">통합관리</div>
         <ul id="ad_nav1">
-            
             <li><a href="/conimal/list.me?currentPage=1">회원조회</a></li>
             <li><a href="/conimal/list.re?currentPage=1">신고조회</a></li>
             <li>

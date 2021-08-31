@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.conimal.spring.common.model.vo.PageInfo;
 import com.conimal.spring.member.model.dao.MemberDao;
 import com.conimal.spring.member.model.vo.Member;
 
@@ -17,8 +18,19 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public ArrayList<Member> selectMemberList(){
-		return mDao.selectMemberList(sqlSession);
+	public int selectMemberListCount() {
+		return mDao.selectMemberListCount(sqlSession);
 	}
+	
+	public ArrayList<Member> selectMemberList(PageInfo pi){
+		return mDao.selectMemberList(sqlSession, pi);
+	}
+
+	@Override
+	public Member selectLoginMember(Member m) {
+		return mDao.selectLoginMember(sqlSession, m);
+	}
+	
+	
 
 }

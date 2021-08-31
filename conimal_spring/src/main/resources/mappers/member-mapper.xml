@@ -4,19 +4,35 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberMapper">
 	<resultMap id="memberResult" type="Member">
-		<result property="mem_no" column="memNo"/>
-		<result property="mem_id" column="memId"/>
-		<result property="mem_pwd" column="memPwd"/>
-		<result property="mem_name" column="memName"/>
+		<result property="memNo" column="mem_no"/>
+		<result property="memId" column="mem_id"/>
+		<result property="memPwd" column="mem_pwd"/>
+		<result property="memName" column="mem_name"/>
 		<result property="email" column="email"/>
-		<result property="enroll_date" column="enrollDate"/>
+		<result property="enrollDate" column="enroll_date"/>
 		<result property="status" column="status"/>
-		<result property="mem_code" column="memCode"/>
+		<result property="memCode" column="mem_code"/>
 	</resultMap>
+	
+	<select id="selectMemberListCount" resultType="_int">
+		select count(*)
+		  from member
+		 where status = 'Y'
+	</select>
 	
 	<select id="selectMemberList" resultMap="memberResult">
 		select *
 		  from member
 		 where status = 'Y'
+		 order
+		    by enroll_date desc
+	</select>
+	
+	<select id="selectLoginMember" resultMap="memberResult">
+		select *
+		  from member
+		 where status = 'Y'
+		   and mem_id = #{memId}
+		   and mem_pwd = #{memPwd}
 	</select>
 </mapper>

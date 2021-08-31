@@ -1,39 +1,3 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.attachment.model.vo.Attachment,com.kh.banner.model.service.BannerService
-    							,com.kh.animal.model.vo.Animal, com.kh.animal.model.service.AnimalService
-    							,java.util.ArrayList,com.kh.common.model.vo.PageInfo,com.kh.adopt.model.service.AdoptService
-    							,com.kh.adopt.model.vo.Adopt"%>
-    <% Attachment at = new BannerService().selectBanner("MAINPAGE");
-	
-	int listCount; 		
-	int currentPage;	
-	int pageLimit;		
-	int boardLimit;			
-	int maxPage;		
-	int startPage;		
-	int endPage;	
-	
-	listCount = new AnimalService().selectDogCount();	
-	currentPage = 1; pageLimit = 10; boardLimit = 4;
-	
-	maxPage = (int)Math.ceil((double)listCount / boardLimit);	
-	startPage = (currentPage - 1) / pageLimit * pageLimit + 1;	
-	endPage = startPage + pageLimit - 1;
-	
-	if(endPage > maxPage) {
-		endPage = maxPage;
-	}
-	
-	PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-	ArrayList<Animal> list = new AnimalService().selectDogList(pi);
-	
-	String keyword="";	
-	listCount = new AdoptService().selectListCount(keyword);
-	
-	PageInfo pi1 = new PageInfo(listCount,currentPage,pageLimit,boardLimit,maxPage,startPage, endPage);
-	ArrayList<Adopt> list1 = new AdoptService().selectList(keyword, pi1);
-	
-	%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  	
@@ -44,8 +8,6 @@
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
-      
-    
     .body{
         width: 1200px;
         height: 1240px;
@@ -115,20 +77,17 @@
 .banner{
 	float:right;
 }
-
-
 </style>
 </head>
 
 <body>
 
 	<jsp:include page="common/header.jsp"/>
-
-	<div class="body">
+	
+	<div class="outer">
 		<div class="imgsilde">
 			<img src="resources/images/5.jpg" class="img1" width= "1200px"  height= "400px" >
-	
-	</div>
+		</div>
 	<%-- <% if(memcode==1){ %>
 		<button onclick="location.href='<%=contextPath%>/bannerUpdateForm.main'" class="banner btn btn-secondary">배너 수정</button>
 	<% }%> --%>
@@ -189,9 +148,10 @@
 				<button onclick="location.href=list.ad?currentPage=1">더보기</button>
 			</div>
 		</div>
+		<jsp:include page="common/footer.jsp"/> 
 	</div>
 
-	<jsp:include page="common/footer.jsp"/> 
+	
         
 </body>
 </html>

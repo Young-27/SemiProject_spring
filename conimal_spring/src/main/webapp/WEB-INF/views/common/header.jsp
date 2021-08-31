@@ -8,17 +8,14 @@
 <title>Insert title here</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 <style>
+    .outer{width: 1200px; margin: auto;  font-family:'Noto Sans KR', sans-serif; }
     .on{
          width: 1200px;
          height: 180px;         
@@ -127,10 +124,15 @@
     }
      </style>
 </head>
-
 <body>
+	<c:if test="${ !empty alertMsg }">
+		<script>	
+			alert("${alertMsg}");
+		</script>
+        <!-- 뭔가가 담겨있는 경우 -->	
+		<c:remove var="alertMsg" scope="session"/>	
+	</c:if>
 	<div class="on">
-		
 		<image src="resources/images/mainLogo.png" width="558px" height="120px" class="mainLogo">
 		<c:choose>
 			<c:when test="${ loginUser eq null }">
@@ -165,11 +167,18 @@
 		
 		
 			<c:otherwise>
-				<div id="user-info">
+				<div id="user-info" align="right" class="login">
 					<b>${ loginUser.memName }님</b>의 방문을 환영합니다. <br>
 					<br>
 					<div align="center">
-						<a href="list.me?currentPage=1">통합관리</a> <a href="myPage.me">마이페이지</a>
+						<c:choose>
+							<c:when test="${ loginUser.memCode eq 1 }">
+								<a href="list.me?currentPage=1">통합관리</a>
+							</c:when>
+							<c:otherwise>
+								<a href="myPage.me">마이페이지</a>
+							</c:otherwise> 
+						</c:choose>
 						<a href="logout.me">로그아웃</a>
 					</div>
 				</div>
@@ -180,7 +189,7 @@
 		<ul id="navi1">
 			<li><a href="/Main.intro">코니멀 소개</a></li>
 			<li><a href="/Main.sh?currentPage=1">보호소</a></li>
-			<li><a href="/list.sh?currentPage=1">보호소</a></li>
+			<!-- <li><a href="/list.sh?currentPage=1">보호소</a></li> -->
 			<li><a href="">입양문의</a>
 				<ul>
 					<li><a href="/list.dog?currentPage=1">보호중인 동물</a></li>
@@ -197,7 +206,7 @@
 				<ul>
 					<li><a href="/list.vo?currentPage=1">자원봉사</a></li>
 					<li><a href="/Main.do?currentPage=1">후원</a></li>
-					<li><a href="/list.do?currentPage=1">후원</a></li>
+					<!-- <li><a href="/list.do?currentPage=1">후원</a></li> -->
 				</ul></li>
 			<li><a href="">커뮤니티</a>
 				<ul>
