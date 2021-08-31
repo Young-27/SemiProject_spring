@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+	<resultMap id="memberResult" type="Member">
+		<result property="mem_no" column="memNo"/>
+		<result property="mem_id" column="memId"/>
+		<result property="mem_pwd" column="memPwd"/>
+		<result property="mem_name" column="memName"/>
+		<result property="email" column="email"/>
+		<result property="enroll_date" column="enrollDate"/>
+		<result property="status" column="status"/>
+		<result property="mem_code" column="memCode"/>
+	</resultMap>
+	
+	<select id="selectMemberList" resultMap="memberResult">
+		select *
+		  from member
+		 where status = 'Y'
+	</select>
+</mapper>

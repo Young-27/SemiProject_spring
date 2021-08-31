@@ -6,60 +6,12 @@
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 	
-	<!-- <typeAliases>
-		<typeAlias type="com.kh.thezo.member.model.vo.Member" alias="Member"/>
-		<typeAlias type="com.kh.thezo.chatting.model.vo.Colleague" alias="Colleague"/>
-		<typeAlias type="com.kh.thezo.chatting.model.vo.ChatRoom" alias="ChatRoom"/>
-		<typeAlias type="com.kh.thezo.chatting.model.vo.ChatDailyBasic" alias="ChatDailyBasic"/>
-		<typeAlias type="com.kh.thezo.chatting.model.vo.ChatConnect" alias="ChatConnect"/>		
-		<typeAlias type="com.kh.thezo.chatting.model.vo.ChatLog" alias="ChatLog"/>
-		<typeAlias type="com.kh.thezo.message.model.vo.Message" alias="Message"/>
-		<typeAlias type="com.kh.thezo.message.model.vo.MsgReport" alias="MsgReport"/>
-		<typeAlias type="com.kh.thezo.notification.model.vo.Notification" alias="Notification"/>
-		<typeAlias type="com.kh.thezo.notification.model.vo.NfCheck" alias="NfCheck"/>
-		<typeAlias type="com.kh.thezo.statistic.model.vo.Statistic" alias="Statistic"/>
-		<typeAlias type="com.kh.thezo.statistic.model.vo.AdminLog" alias="AdminLog"/>
-		<typeAlias type="com.kh.thezo.document.model.vo.Document" alias="Document"/>
-		<typeAlias type="com.kh.thezo.approval.model.vo.Approval" alias="Approval"/>
-		<typeAlias type="com.kh.thezo.mail.model.vo.Mail" alias="Mail"/>
-		<typeAlias type="com.kh.thezo.approval.model.vo.ApprovalAccept" alias="ApprovalAccept"/> 
-		<typeAlias type="com.kh.thezo.board.model.vo.Board" alias="Board"/>
-		<typeAlias type="com.kh.thezo.board.model.vo.BoardFile" alias="BoardFile"/>	
-		<typeAlias type="com.kh.thezo.market.model.vo.Market" alias="Market"/>
-		<typeAlias type="com.kh.thezo.market.model.vo.PLike" alias="PLike"/>
-		<typeAlias type="com.kh.thezo.board.model.vo.Report" alias="Report"/>
-		<typeAlias type="com.kh.thezo.board.model.vo.Reply" alias="Reply"/>
-		<typeAlias type="com.kh.thezo.schedule.model.vo.Schedule" alias="Schedule"/>
-		<typeAlias type="com.kh.thezo.contact.model.vo.CompanyInfo" alias="Company"/>
-		<typeAlias type="com.kh.thezo.note.model.vo.Note" alias="Note"/>
-		<typeAlias type="com.kh.thezo.attendance.model.vo.Attendance" alias="Attendance"/>	
-		<typeAlias type="com.kh.thezo.mail.model.vo.Attachment" alias="Attachment"/>
-		<typeAlias type="com.kh.thezo.department.model.vo.Department" alias="Department"/>
-		<typeAlias type="com.kh.thezo.document.model.vo.DocCategory" alias="DocCategory"/>
-		<typeAlias type="com.kh.thezo.reservation.model.vo.Reservation" alias="Reservation"/>
-		<typeAlias type="com.kh.thezo.reservation.model.vo.Resources" alias="Resources"/>
-		<typeAlias type="com.kh.thezo.leave.model.vo.Leave" alias="Leave"/>
-		<typeAlias type="com.kh.thezo.reservation.model.vo.ReCategory" alias="ReCategory"/>
+	<typeAliases>
+		<typeAlias type="com.conimal.spring.member.model.vo.Member" alias="Member"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="/mappers/member-mapper.xml"/>
-		<mapper resource="/mappers/chatting-mapper.xml"/>
-		<mapper resource="/mappers/common-mapper.xml"/>
-		<mapper resource="/mappers/message-mapper.xml"/>
-		<mapper resource="/mappers/notification-mapper.xml"/>
-		<mapper resource="/mappers/statistic-mapper.xml"/>
-		<mapper resource="/mappers/document-mapper.xml"/>		
-		<mapper resource="/mappers/approval-mapper.xml"/>		
-		<mapper resource="/mappers/mail-mapper.xml"/>
-		<mapper resource="/mappers/board-mapper.xml"/>	
-		<mapper resource="/mappers/market-mapper.xml"/>
-		<mapper resource="/mappers/schedule-mapper.xml"/>
-		<mapper resource="/mappers/company-mapper.xml"/>
-		<mapper resource="/mappers/note-mapper.xml"/>
-		<mapper resource="/mappers/attendance-mapper.xml"/>
-		<mapper resource="/mappers/department-mapper.xml"/>
-		<mapper resource="/mappers/reservation-mapper.xml"/>
-	</mappers> -->
+	</mappers>
 
 </configuration>

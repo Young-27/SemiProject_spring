@@ -122,26 +122,26 @@
 
 <body>
 
-    <jsp:include page="common/header.jsp"/>
+	<jsp:include page="common/header.jsp"/>
 
 	<div class="body">
 		<div class="imgsilde">
-			<%-- <img src="<%=contextPath %>/resources/images/5.jpg" class="img1" width= "1200px"  height= "400px" > --%>
-
+			<img src="resources/images/5.jpg" class="img1" width= "1200px"  height= "400px" >
+	
+	</div>
+	<%-- <% if(memcode==1){ %>
+		<button onclick="location.href='<%=contextPath%>/bannerUpdateForm.main'" class="banner btn btn-secondary">배너 수정</button>
+	<% }%> --%>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="animal">
+		<div class="extitle">
+			<h3>보호중인 아이들</h3>
 		</div>
-		<%-- <% if(memcode==1){ %>
-  	<button onclick="location.href='<%=contextPath%>/bannerUpdateForm.main'" class="banner btn btn-secondary">배너 수정</button>
- 	<% }%> --%>
-		<br>
-		<br>
-		<br>
-		<br>
-		<div class="animal">
-			<div class="extitle">
-				<h3>보호중인 아이들</h3>
-			</div>
-			<div class="careingimg">
-				<%-- <%if(list.isEmpty()) {%>
+		<div class="careingimg">
+			<%-- <%if(list.isEmpty()) {%>
 	조회된 결과가 없습니다
 <%} else { %>
 	<%for(Animal a : list) {%>

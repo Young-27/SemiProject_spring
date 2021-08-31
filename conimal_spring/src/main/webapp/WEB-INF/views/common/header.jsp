@@ -129,147 +129,146 @@
 </head>
 
 <body>
-            <div class="on">  
-
-                    <image onclick="location.href=/conimal" src="resources/images/mainLogo.png" width="558px" height="120px" class="mainLogo">
-                        
-                        <div class="login" align="center">
-                            <form action="login.me" id="loginform" method="POST">                
-                                
-                                <div class="id_pwd">        
-                                    <input type="text" class="id" placeholder="아이디" name="memId" required><br>
-                                    <input type="password" class="pwd" placeholder="비밀번호" name="memPwd" required>                    
-                                </div>
-                         
-                                <div class="loginbtn">
-                                    <input type="submit" value="login">
-                                </div>
-                                
-                            </form>      
-                            <a href = "/searchIdPwd.me" id="searchMem" style="font-style: normal; text-decoration: none; color: black;" class="find">ID/PW 찾기</a> | 
-                            <a href = "/joinChooseForm.me" id="enrollMem" style="font-style: normal; text-decoration: none; color: black;" class="find">회원가입</a>
-                        </div>   
-                        
-          
-                        <script>
-                        
-                            function enrollPage(){
-                                //location.href = "= contextPath /views/member/memberEnrollForm.jsp";
-                                // 웹 애플리케이션의 디렉토리 구조가 url에 노출되면 보안에 위험함
-                                
-                                // 단순한 정적인 페이지 요청이라고 해도 반드시 servlet거쳐갈 것! => url에서 서블릿 매핑값만 노출됨
-                                location.href="enrollForm.me";
-                            }
-                        </script>
-                        
-                         } else { 
-                            <div id="user-info">
-                                <b>님</b>의 방문을 환영합니다. <br><br>
-                                <div align="center">
-                                <a href = "list.me?currentPage=1">통합관리</a> 
-                                <a href = "myPage.me">마이페이지</a>
-                                <a href = "logout.me">로그아웃</a>
-                                </div>
-                            </div>
-                         } 
-
-
-                        
-                       
-            </div>
-            <div class="navi">                
-                    <ul id="navi1" >
-                        <li><a href="/Main.intro">코니멀 소개</a></li>
-                            <li><a href="/Main.sh?currentPage=1">보호소</a></li>
-                              <li><a href="/list.sh?currentPage=1">보호소</a></li>
-                        <li><a href="">입양문의</a>
-                            <ul>
-                                <li><a href="/list.dog?currentPage=1">보호중인 동물</a></li>
-                                <li><a href="/process.ad">입양 절차</a></li>
-                                <li><a href="">입양 신청</a></li>
-                                <li><a href="list.ad?currentPage=1">입양 후기</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">입소문의</a>                        
-                            <ul>
-                                <li><a href="/process.en">입소 절차</a></li>
-                                <li><a href="">입소 신청</a></li>                      
-                            </ul>
-                        </li>
-                        <li><a href="">후원 &amp; 자원봉사</a>
-                        <ul>
-                            <li><a href="/list.vo?currentPage=1">자원봉사</a></li>
-                                <li><a href="/Main.do?currentPage=1">후원</a></li>
-                                   <li><a href="/list.do?currentPage=1">후원</a></li>
-                        </ul>
-                      </li>
-                        <li><a href="">커뮤니티</a>
-                        <ul>
-                            <li><a href="list.cp?currentPage=1">자유 게시판</a></li>
-                            <li><a href="Main.no?currentPage=1">공지사항</a></li>
-                            <li><a href="">고객센터</a></li>
-                        </ul>
-                    </li>
-                    </ul>
-            </div>            
-          <!-- 신고버튼 클릭시 보여질 Modal -->
-		<div class="modal" id="reportForm">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
+	<div class="on">
 		
-		      <!-- Modal Header -->
-		      <div class="modal-header">
-		        <h4 class="modal-title">신고하기</h4>
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		      </div>
-				
-			    <form action="report" method="post">
-			
-			      <!-- Modal body -->
-			      <div class="modal-body">
-			      	<div class="post-info">
-			      		<!-- 게시글 번호 -->
-			      		<input type="hidden" name="postNo" id="postNo" value=""/>
-			      		<!-- 게시글 유형 -->
-			      		<input type="hidden" name="refType" id="refType" value=""/>
-			      		<!-- 신고자 번호 -->
-			      		<input type="hidden" name="memNo" id="memNo" value=""/>
-			      	</div>
-			      
-			      	<div class="form-check">
-					  <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="reportNo" value="1">부적절한 홍보 게시글
-					  </label>
-					</div>
-					<div class="form-check">
-					  <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="reportNo" value="2">음란성 또는 청소년에게 부적합한 내용
-					  </label>
-					</div>
-					<div class="form-check">
-					  <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="reportNo" value="3">명예훼손/사생활 침해 및 저작권 침해 등
-					  </label>
-					</div>
-					<div class="form-check">
-					  <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="reportNo" value="4">불법촬영물 등 신고
-					  </label>
-					</div>
-					
-			      </div>
-					
-			      <!-- Modal footer -->
-			      <div class="modal-footer">
-			      	<button type="submit" class="btn btn-primary">신고</button>
-			        <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
-			      </div>
-		      
-		      </form>
+		<image src="resources/images/mainLogo.png" width="558px" height="120px" class="mainLogo">
+		<c:choose>
+			<c:when test="${ loginUser eq null }">
+				<div class="login" align="center">
+					<form action="login.me" id="loginform" method="POST">
+						<div class="id_pwd">
+							<input type="text" class="id" placeholder="아이디" name="memId" required>
+							<br> 
+							<input type="password" class="pwd" placeholder="비밀번호" name="memPwd" required>
+						</div>
+						<div class="loginbtn">
+							<input type="submit" value="login">
+						</div>
+					</form>
+					<a href="/searchIdPwd.me" id="searchMem"
+						style="font-style: normal; text-decoration: none; color: black;"
+						class="find">ID/PW 찾기</a> | <a href="/joinChooseForm.me"
+						id="enrollMem"
+						style="font-style: normal; text-decoration: none; color: black;"
+						class="find">회원가입</a>
+				</div>
+				<script>
+					function enrollPage(){
+					    //location.href = "= contextPath /views/member/memberEnrollForm.jsp";
+					    // 웹 애플리케이션의 디렉토리 구조가 url에 노출되면 보안에 위험함
+					    
+					    // 단순한 정적인 페이지 요청이라고 해도 반드시 servlet거쳐갈 것! => url에서 서블릿 매핑값만 노출됨
+					    location.href="enrollForm.me";
+					}
+				</script>
+			</c:when>
 		
-		    </div>
-		  </div>
-		</div>   
-           
+		
+			<c:otherwise>
+				<div id="user-info">
+					<b>${ loginUser.memName }님</b>의 방문을 환영합니다. <br>
+					<br>
+					<div align="center">
+						<a href="list.me?currentPage=1">통합관리</a> <a href="myPage.me">마이페이지</a>
+						<a href="logout.me">로그아웃</a>
+					</div>
+				</div>
+			</c:otherwise>
+		</c:choose>
+	</div>
+	<div class="navi">
+		<ul id="navi1">
+			<li><a href="/Main.intro">코니멀 소개</a></li>
+			<li><a href="/Main.sh?currentPage=1">보호소</a></li>
+			<li><a href="/list.sh?currentPage=1">보호소</a></li>
+			<li><a href="">입양문의</a>
+				<ul>
+					<li><a href="/list.dog?currentPage=1">보호중인 동물</a></li>
+					<li><a href="/process.ad">입양 절차</a></li>
+					<li><a href="">입양 신청</a></li>
+					<li><a href="list.ad?currentPage=1">입양 후기</a></li>
+				</ul></li>
+			<li><a href="">입소문의</a>
+				<ul>
+					<li><a href="/process.en">입소 절차</a></li>
+					<li><a href="">입소 신청</a></li>
+				</ul></li>
+			<li><a href="">후원 &amp; 자원봉사</a>
+				<ul>
+					<li><a href="/list.vo?currentPage=1">자원봉사</a></li>
+					<li><a href="/Main.do?currentPage=1">후원</a></li>
+					<li><a href="/list.do?currentPage=1">후원</a></li>
+				</ul></li>
+			<li><a href="">커뮤니티</a>
+				<ul>
+					<li><a href="list.cp?currentPage=1">자유 게시판</a></li>
+					<li><a href="Main.no?currentPage=1">공지사항</a></li>
+					<li><a href="">고객센터</a></li>
+				</ul></li>
+		</ul>
+	</div>
+	<!-- 신고버튼 클릭시 보여질 Modal -->
+	<div class="modal" id="reportForm">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">신고하기</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<form action="report" method="post">
+
+					<!-- Modal body -->
+					<div class="modal-body">
+						<div class="post-info">
+							<!-- 게시글 번호 -->
+							<input type="hidden" name="postNo" id="postNo" value="" />
+							<!-- 게시글 유형 -->
+							<input type="hidden" name="refType" id="refType" value="" />
+							<!-- 신고자 번호 -->
+							<input type="hidden" name="memNo" id="memNo" value="" />
+						</div>
+
+						<div class="form-check">
+							<label class="form-check-label"> <input type="radio"
+								class="form-check-input" name="reportNo" value="1">부적절한
+								홍보 게시글
+							</label>
+						</div>
+						<div class="form-check">
+							<label class="form-check-label"> <input type="radio"
+								class="form-check-input" name="reportNo" value="2">음란성
+								또는 청소년에게 부적합한 내용
+							</label>
+						</div>
+						<div class="form-check">
+							<label class="form-check-label"> <input type="radio"
+								class="form-check-input" name="reportNo" value="3">명예훼손/사생활
+								침해 및 저작권 침해 등
+							</label>
+						</div>
+						<div class="form-check">
+							<label class="form-check-label"> <input type="radio"
+								class="form-check-input" name="reportNo" value="4">불법촬영물
+								등 신고
+							</label>
+						</div>
+
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary">신고</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
