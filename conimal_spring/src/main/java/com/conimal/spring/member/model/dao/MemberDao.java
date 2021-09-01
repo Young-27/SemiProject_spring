@@ -24,4 +24,8 @@ public class MemberDao {
 		return sqlSession.selectOne("memberMapper.selectLoginMember", m);
 	}
 	
+	public Member selectMemberDetail(SqlSession sqlSession, int mno) {
+		return sqlSession.selectOne("memberMapper.selectMemberDetail", mno);
+	}
+	
 }

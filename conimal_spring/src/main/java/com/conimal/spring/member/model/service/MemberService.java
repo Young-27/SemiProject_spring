@@ -13,5 +13,7 @@ public interface MemberService {
 	// 회원 리스트 조회 (관리자)
 	public int selectMemberListCount();
 	public ArrayList<Member> selectMemberList(PageInfo pi);
+	// 회원 상세 조회
+	public Member selectMemberDetail(int mno);
 	
 }

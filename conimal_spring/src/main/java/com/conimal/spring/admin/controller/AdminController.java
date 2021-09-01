@@ -29,4 +29,11 @@ public class AdminController {
 		return "admin/memberListView";
 	}
 	
+	@RequestMapping("detail.me")
+	public String selectMemberDetail(Model model, int mno) {
+		Member m = mService.selectMemberDetail(mno);
+		model.addAttribute("m", m);
+		return "admin/memberDetailView";
+	}
+	
 }

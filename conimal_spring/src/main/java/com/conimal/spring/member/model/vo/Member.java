@@ -19,4 +19,12 @@ public class Member {
 	private Date enrollDate;
 	private String status;
 	private int memCode;
+	
+	private String shName;
+	private String shPhone;
+	private String shAddress;
+	private String shAbout;
+	private String admission;
+	private String shLocal;
+	private String refType;
 }

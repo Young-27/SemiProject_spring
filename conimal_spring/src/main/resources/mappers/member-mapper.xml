@@ -12,6 +12,13 @@
 		<result property="enrollDate" column="enroll_date"/>
 		<result property="status" column="status"/>
 		<result property="memCode" column="mem_code"/>
+		<result property="shName" column="sh_name"/>
+		<result property="shPhone" column="sh_phone"/>
+		<result property="shAddress" column="sh_address"/>
+		<result property="shAbout" column="sh_about"/>
+		<result property="admission" column="admission"/>
+		<result property="shLocal" column="sh_local"/>
+		<result property="refType" column="ref_type"/>
 	</resultMap>
 	
 	<select id="selectMemberListCount" resultType="_int">
@@ -35,4 +42,13 @@
 		   and mem_id = #{memId}
 		   and mem_pwd = #{memPwd}
 	</select>
+	
+	<select id="selectMemberDetail" resultMap="memberResult">
+		select *
+		  from member
+		  join shelter using (mem_no)
+		 where status = 'Y'
+		   and mem_no = #{mno}
+	</select>
+	
 </mapper>
