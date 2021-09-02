@@ -28,4 +28,12 @@ public class MemberDao {
 		return sqlSession.selectOne("memberMapper.selectMemberDetail", mno);
 	}
 	
+	public int adminUpdateMember(SqlSession sqlSession, Member m) {
+		return sqlSession.update("memberMapper.adminUpdateMember", m);
+	}
+	
+	public int adminDeleteMember(SqlSession sqlSession, int mno) {
+		return sqlSession.delete("memberMapper.adminDeleteMember", mno);
+	}
+	
 }

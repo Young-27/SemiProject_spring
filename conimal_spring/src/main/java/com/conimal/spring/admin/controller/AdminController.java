@@ -2,6 +2,8 @@ package com.conimal.spring.admin.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +36,28 @@ public class AdminController {
 		Member m = mService.selectMemberDetail(mno);
 		model.addAttribute("m", m);
 		return "admin/memberDetailView";
+	}
+	
+	@RequestMapping("update.adme")
+	public String updateMember(Model model, Member m, HttpSession session) {
+		int result = mService.adminUpdateMember(m);
+		if(result > 0) {
+			session.setAttribute("alertMsg", "회원 정보가 수정되었습니다.");
+		}else {
+			session.setAttribute("alertMsg", "회원 정보 수정 실패!!!");
+		}
+		return "redirect:/detail.me?mno=" + m.getMemNo();
+	}
+	
+	@RequestMapping("delete.adme")
+	public String deleteMember(int memNo, Model model, HttpSession session) {
+		int result = mService.adminDeleteMember(memNo);
+		if(result > 0) {
+			session.setAttribute("alertMsg", "회원 정보가 삭제되었습니다.");
+		}else {
+			session.setAttribute("alertMsg", "회원 정보 삭제 실패!!!!!");
+		}
+		return "redirect:/list.me";
 	}
 	
 }

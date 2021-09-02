@@ -35,7 +35,8 @@
         <a href="list.me" class="btn" id="back" style="background-color: rgb(187, 208, 227)">목록</a>
         <br><br><br>
         <div class="memberDetail">
-            <form action="updateMember.im" method="post">
+            <form action="update.adme" method="post">
+            	<input type="hidden" name="memNo" value="${ m.memNo }">
                 <table class="table" id="memberDetail" border="1">
                     <tr>
                         <th width="100px">아이디</th>

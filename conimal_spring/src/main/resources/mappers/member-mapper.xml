@@ -51,4 +51,32 @@
 		   and mem_no = #{mno}
 	</select>
 	
+	<update id="adminUpdateMember">
+		update 
+			   (select *
+		          from member
+		          left join shelter using (mem_no))
+   		   set 
+   		   	   mem_name = #{memName}
+   		     , email = #{email}
+			<if test="memCode == 2">
+			 , sh_name = #{memName}
+			 , sh_phone = #{shPhone}
+			 , sh_address = #{shAddress}
+			 , sh_about = #{shAbout}
+			</if>
+ 		 where mem_no = #{memNo}
+	</update>
+	
+	<delete id="adminDeleteMember">
+		update
+			   member
+		   set 
+		   	   status = 'N'
+		 where 
+		 	   mem_no = #{memNo}
+	</delete>
+	
+	
+	
 </mapper>
