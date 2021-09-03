@@ -36,4 +36,7 @@ public class MemberDao {
 		return sqlSession.delete("memberMapper.adminDeleteMember", mno);
 	}
 	
+	public int adminUpdateShelter(SqlSession sqlSession, Member m) {
+		return sqlSession.update("memberMapper.adminUpdateShelter", m);
+	}
 }

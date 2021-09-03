@@ -22,6 +22,7 @@ public interface MemberService {
 	
 	// 회원 정보 수정/삭제
 	public int adminUpdateMember(Member m);
+	public int adminUpdateShelter(Member m);
 	public int adminDeleteMember(int mno);
 	
 	/*

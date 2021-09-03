@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.conimal.spring.board.model.vo.Board;
 import com.conimal.spring.common.model.vo.PageInfo;
 import com.conimal.spring.common.template.Pagination;
 import com.conimal.spring.member.model.service.MemberService;
@@ -40,12 +41,24 @@ public class AdminController {
 	
 	@RequestMapping("update.adme")
 	public String updateMember(Model model, Member m, HttpSession session) {
-		int result = mService.adminUpdateMember(m);
-		if(result > 0) {
-			session.setAttribute("alertMsg", "회원 정보가 수정되었습니다.");
-		}else {
-			session.setAttribute("alertMsg", "회원 정보 수정 실패!!!");
+		if(m.getMemCode() == 2) { // 보호소라면
+			int result1 = mService.adminUpdateShelter(m);
+			
+			if(result1 > 0) {
+				session.setAttribute("alertMsg", "회원 정보가 수정되었습니다.");
+			}else {
+				session.setAttribute("alertMsg", "회원 정보 수정 실패!!!");
+			}
+		}else { // 보호소가 아니라면
+			int result2 = mService.adminUpdateMember(m);
+			
+			if(result2 > 0) {
+				session.setAttribute("alertMsg", "회원 정보가 수정되었습니다.");
+			}else {
+				session.setAttribute("alertMsg", "회원 정보 수정 실패!!!");
+			}
 		}
+		
 		return "redirect:/detail.me?mno=" + m.getMemNo();
 	}
 	
@@ -58,6 +71,12 @@ public class AdminController {
 			session.setAttribute("alertMsg", "회원 정보 삭제 실패!!!!!");
 		}
 		return "redirect:/list.me";
+	}
+	
+	@RequestMapping("list.bo")
+	public String selectBoardList(Model model) {
+		ArrayList<Board> bList = bServcie.selectBoardList();
+		return "admin/boardListBiew";
 	}
 	
 }

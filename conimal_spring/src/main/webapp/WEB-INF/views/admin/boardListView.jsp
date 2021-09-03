@@ -1,18 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page 
-	import="java.util.ArrayList, com.kh.common.model.vo.PageInfo,
-			com.kh.board.model.vo.Board"
-%>
-<%
-	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,9 +30,9 @@
 </style>
 </head>
 <body>
-	<%@ include file="../common/adminPageNavibar.jsp" %>
-	<%@ include file="../common/menubar.jsp" %>
+	<jsp:include page="../common/header.jsp"/>
 	<div class="outer" align="center">
+		<jsp:include page="../common/adminPageNavibar.jsp"/>
 		<br>
         <div data-text-content="true" style="font-size: 16px; font-weight: bold; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">통합 관리&gt; 게시판 글 조회</div>
         <div data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">게시판 글 조회</div>
@@ -161,12 +148,12 @@
 				  </ul>
 				</div>
 	        </div>
+	        <jsp:include page="../common/footer.jsp"/>
 	      </div>
         <br>
 
         <br>
    
-    <%@ include file="../common/footerbar.jsp" %>
   
 </body>
 </html>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+
+	<resultMap id="boardResult" type="Board">
+		
+	</resultMap>
+	
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*) COUNT
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                  SELECT B_NO, REF_TYPE, TITLE, WRITER, B_DATE, B_COUNT
+		                  FROM 
+		                       (
+		                        SELECT ADOPT_NO AS B_NO, REF_TYPE, ADOPT_TITLE AS TITLE, ADOPT_WRITER AS WRITER, ADOPT_DATE AS B_DATE, COUNT AS B_COUNT
+		                          FROM ADOPT
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT AN_NO, REF_TYPE, AN_TITLE, MEM_NO, AN_WRITEDATE, AN_COUNT
+		                          FROM ANIMAL
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT CPOST_NO, REF_TYPE, CPOST_TITLE, CUSER_ID, CPOST_DATE, CPOST_COUNT
+		                        FROM C_POST
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT DO_NO, REF_TYPE, DO_TITLE, MEM_NO, DO_WRITEDATE, DO_COUNT
+		                        FROM DONATION
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT VOL_NO, REF_TYPE, VOL_TITLE, MEM_NO, VOL_WRITEDATE, VOL_COUNT
+		                         FROM VOLUNTEER
+		                        )
+		                    ORDER
+		                       BY B_DATE DESC
+		                ) A
+		        )
+	</select>	
+	<select id="selectBoardList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                  SELECT B_NO, REF_TYPE, TITLE, WRITER, B_DATE, B_COUNT
+		                  FROM 
+		                       (
+		                        SELECT ADOPT_NO AS B_NO, REF_TYPE, ADOPT_TITLE AS TITLE, ADOPT_WRITER AS WRITER, ADOPT_DATE AS B_DATE, COUNT AS B_COUNT
+		                          FROM ADOPT
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT AN_NO, REF_TYPE, AN_TITLE, MEM_NO, AN_WRITEDATE, AN_COUNT
+		                          FROM ANIMAL
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT CPOST_NO, REF_TYPE, CPOST_TITLE, CUSER_ID, CPOST_DATE, CPOST_COUNT
+		                        FROM C_POST
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT DO_NO, REF_TYPE, DO_TITLE, MEM_NO, DO_WRITEDATE, DO_COUNT
+		                        FROM DONATION
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT VOL_NO, REF_TYPE, VOL_TITLE, MEM_NO, VOL_WRITEDATE, VOL_COUNT
+		                         FROM VOLUNTEER
+		                        )
+		                    ORDER
+		                       BY B_DATE DESC
+		                ) A
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</select>	
+	<select id="searchListCount">
+		SELECT COUNT(*) COUNT
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                  SELECT B_NO, REF_TYPE, TITLE, WRITER, B_DATE, B_COUNT
+		                  FROM 
+		                       (
+		                        SELECT ADOPT_NO AS B_NO, REF_TYPE, ADOPT_TITLE AS TITLE, ADOPT_WRITER AS WRITER, ADOPT_DATE AS B_DATE, COUNT AS B_COUNT
+		                          FROM ADOPT
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT AN_NO, REF_TYPE, AN_TITLE, MEM_NO, AN_WRITEDATE, AN_COUNT
+		                          FROM ANIMAL
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT CPOST_NO, REF_TYPE, CPOST_TITLE, CUSER_ID, CPOST_DATE, CPOST_COUNT
+		                        FROM C_POST
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT DO_NO, REF_TYPE, DO_TITLE, MEM_NO, DO_WRITEDATE, DO_COUNT
+		                        FROM DONATION
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT VOL_NO, REF_TYPE, VOL_TITLE, MEM_NO, VOL_WRITEDATE, VOL_COUNT
+		                         FROM VOLUNTEER
+		                        )
+		                    ORDER
+		                       BY B_DATE DESC
+		                ) A
+		        )
+  		 WHERE TITLE LIKE '%' || ? || '%'
+	</select>
+	<select id="searchBoardList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                  SELECT B_NO, REF_TYPE, TITLE, WRITER, B_DATE, B_COUNT
+		                  FROM 
+		                       (
+		                        SELECT ADOPT_NO AS B_NO, REF_TYPE, ADOPT_TITLE AS TITLE, ADOPT_WRITER AS WRITER, ADOPT_DATE AS B_DATE, COUNT AS B_COUNT
+		                          FROM ADOPT
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT AN_NO, REF_TYPE, AN_TITLE, MEM_NO, AN_WRITEDATE, AN_COUNT
+		                          FROM ANIMAL
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT CPOST_NO, REF_TYPE, CPOST_TITLE, CUSER_ID, CPOST_DATE, CPOST_COUNT
+		                        FROM C_POST
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT DO_NO, REF_TYPE, DO_TITLE, MEM_NO, DO_WRITEDATE, DO_COUNT
+		                        FROM DONATION
+		                      
+		                        UNION ALL
+		                    
+		                        SELECT VOL_NO, REF_TYPE, VOL_TITLE, MEM_NO, VOL_WRITEDATE, VOL_COUNT
+		                         FROM VOLUNTEER
+		                        )
+		                    WHERE TITLE LIKE '%' || ? || '%'
+		                    ORDER
+		                       BY B_DATE DESC
+		                ) A
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</select>		 
+</mapper>	

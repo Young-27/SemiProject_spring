@@ -52,20 +52,21 @@
 	</select>
 	
 	<update id="adminUpdateMember">
-		update 
-			   (select *
-		          from member
-		          left join shelter using (mem_no))
+		update member
    		   set 
    		   	   mem_name = #{memName}
    		     , email = #{email}
-			<if test="memCode == 2">
-			 , sh_name = #{memName}
+ 		 where mem_no = #{memNo}
+	</update>
+	
+	<update id="adminUpdateShelter">
+		update shelter
+		   set
+		   	   sh_name = #{memName}
 			 , sh_phone = #{shPhone}
 			 , sh_address = #{shAddress}
 			 , sh_about = #{shAbout}
-			</if>
- 		 where mem_no = #{memNo}
+		 where mem_no = #{memNo}
 	</update>
 	
 	<delete id="adminDeleteMember">

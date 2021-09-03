@@ -45,6 +45,11 @@ public class MemberServiceImpl implements MemberService {
 	public int adminDeleteMember(int mno) {
 		return mDao.adminDeleteMember(sqlSession, mno);
 	}
+
+	@Override
+	public int adminUpdateShelter(Member m) {
+		return mDao.adminUpdateMember(sqlSession, m);
+	}
 	
 	
 

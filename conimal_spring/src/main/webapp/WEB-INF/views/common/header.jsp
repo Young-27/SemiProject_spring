@@ -18,6 +18,7 @@
 <style>
     .outer{
     	width: 1200px; 
+    	height: 800px;
     	margin: auto;  
 	}
 	body{font-family: 'NEXON Lv1 Gothic OTF';}
