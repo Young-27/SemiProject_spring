@@ -40,7 +40,7 @@
                 <table class="table" id="memberDetail" border="1">
                     <tr>
                         <th width="100px">아이디</th>
-                        <td >${ m.memId }</td>
+                        <td>${ m.memId }</td>
                     </tr>
                     <tr>
                         <th>이름</th>
@@ -54,6 +54,7 @@
                         <th>가입일</th>
                         <td>${ m.enrollDate }</td>
                     </tr>
+                    
                     <c:if test="${ m.memCode == 2 }">
                     	<tr>
                     		<th>연락처</th>
@@ -70,6 +71,7 @@
                     		</td>
                     	</tr>
                     </c:if>
+                    
                 </table>
                 <br>
                 <div class=button-area align="center">
@@ -79,11 +81,9 @@
                 <br>
             </form>
         </div>
-        
+        <jsp:include page="../common/footer.jsp"/>
     </div>
     
-    <jsp:include page="../common/footer.jsp"/>
-	
 	<!-- 회원탈퇴 버튼 클릭시 보여질 Modal -->
 	<div class="modal" id="deleteForm">
 	  <div class="modal-dialog">

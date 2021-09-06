@@ -46,7 +46,7 @@
 	<select id="selectMemberDetail" resultMap="memberResult">
 		select *
 		  from member
-		  join shelter using (mem_no)
+		  left join shelter using (mem_no)
 		 where status = 'Y'
 		   and mem_no = #{mno}
 	</select>

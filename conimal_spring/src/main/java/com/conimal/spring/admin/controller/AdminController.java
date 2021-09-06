@@ -40,14 +40,15 @@ public class AdminController {
 	public String selectMemberDetail(Model model, int mno) {
 		Member m = mService.selectMemberDetail(mno);
 		model.addAttribute("m", m);
+		System.out.println(mno);
+		System.out.println(m);
 		return "admin/memberDetailView";
 	}
 	
-	@RequestMapping(value="update.adme", method=RequestMethod.POST)
+	@RequestMapping("update.adme")
 	public String updateMember(Model model, Member m, HttpSession session) {
 		if(m.getMemCode() == 2) { // 보호소라면
 			int result1 = mService.adminUpdateShelter(m);
-			
 			if(result1 > 0) {
 				session.setAttribute("alertMsg", "회원 정보가 수정되었습니다.");
 			}else {
@@ -55,14 +56,12 @@ public class AdminController {
 			}
 		}else { // 보호소가 아니라면
 			int result2 = mService.adminUpdateMember(m);
-			
 			if(result2 > 0) {
 				session.setAttribute("alertMsg", "회원 정보가 수정되었습니다.");
 			}else {
 				session.setAttribute("alertMsg", "회원 정보 수정 실패!!!");
 			}
 		}
-		
 		return "redirect:/detail.me?mno=" + m.getMemNo();
 	}
 	
@@ -83,7 +82,9 @@ public class AdminController {
 		int listCount = bService.selectListCount();
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 10);
 		ArrayList<Board> bList = bService.selectBoardList(pi);
-		return "admin/boardListBiew";
+		model.addAttribute("pi", pi);
+		model.addAttribute("bList", bList);
+		return "admin/boardListView";
 	}
 	
 }
