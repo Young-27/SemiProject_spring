@@ -679,7 +679,5 @@ INSERT
        
         );
 
-UPDATE REPORT_REASON
-
 
 commit;

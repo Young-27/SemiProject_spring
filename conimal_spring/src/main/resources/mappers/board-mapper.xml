@@ -5,7 +5,12 @@
 <mapper namespace="boardMapper">
 
 	<resultMap id="boardResult" type="Board">
-		
+		<result property="bno" column="b_no"/>
+		<result property="refType" column="ref_type"/>
+		<result property="title" column="title"/>
+		<result property="writer" column="writer"/>
+		<result property="bDate" column="b_date"/>
+		<result property="bCount" column="b_count"/>
 	</resultMap>
 	
 	<select id="selectListCount" resultType="_int">
@@ -79,9 +84,8 @@
 		                       BY B_DATE DESC
 		                ) A
 		        )
-		 WHERE RNUM BETWEEN ? AND ?
 	</select>	
-	<select id="searchListCount">
+	<!-- <select id="searchListCount">
 		SELECT COUNT(*) COUNT
 		  FROM (
 		        SELECT ROWNUM RNUM, A.*
@@ -155,5 +159,5 @@
 		                ) A
 		        )
 		 WHERE RNUM BETWEEN ? AND ?
-	</select>		 
+	</select>		  -->
 </mapper>	

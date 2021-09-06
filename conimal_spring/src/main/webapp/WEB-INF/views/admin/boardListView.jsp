@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +42,7 @@
 		    http://localhost:8888/conimal/list.me?search_op=id&keyword=dd
 		-->
 		<nav class="navbar navbar-dark justify-content-center">
-			<form class="form-inline" action="<%=contextPath%>/listSearch.bo">
+			<form class="form-inline" action="listSearch.bo">
 				<div class="search">
 					<input type="hidden" name="currentPage" value="1">
 					<input type="text" name="keyword" class="form-control mr-sm-2" placeholder="검색할 게시글 제목을 입력하세요" style="width:500px">
@@ -67,13 +68,10 @@
 		            </thead>
 		            <tbody class="text-center">
 		            	<tr>
-		            		<%if(list.isEmpty()){ %>
 			            		<tr>
 			            			<td colspan="6">등록된 글이 없습니다.</td>
 			            		</tr>
-		            		<%} else { %>
-		            			<% for(Board b : list){ %>
-		            			<tr>
+		            			<%-- <tr>
 					                <td><%=b.getBno() %></td>
 					                <% if(b.getbRefType().equals("POST")){ %>
 					                	<td>자유게시판</td>
@@ -93,9 +91,7 @@
 					                <td><%=b.getbWrtier() %></td>
 					                <td><%=b.getbDate() %></td>
 					                <td><%=b.getbCount() %></td>
-			            		</tr>
-			            		<% } %>
-			            	<% } %>
+			            		</tr> --%>
 		            </tbody>
 	        	</table>
 	          </div>
@@ -105,15 +101,15 @@
 	          		$(".list-area>tbody>tr").click(function(){
 	          			var refType = $(this).children().eq(1).text();
 	          			if(refType == "자유게시판"){
-	          				location.href = "<%=contextPath%>/detail.cp?cno=" + $(this).children().eq(0).text();
+	          				location.href = "detail.cp?cno=" + $(this).children().eq(0).text();
 	          			}else if(refType == "보호중인 아이들"){
-	          				location.href = "<%=contextPath%>/detail.an?ano=" + $(this).children().eq(0).text();
+	          				location.href = "detail.an?ano=" + $(this).children().eq(0).text();
 	          			}else if(refType == "입양 후기"){
-	          				location.href = "<%=contextPath%>/detail.ad?ano=" + $(this).children().eq(0).text();
+	          				location.href = "detail.ad?ano=" + $(this).children().eq(0).text();
 	          			}else if(refType == "후원"){
-	          				location.href = "<%=contextPath%>/detail.do?dno=" + $(this).children().eq(0).text();
+	          				location.href = "detail.do?dno=" + $(this).children().eq(0).text();
 	          			}else if(refType == "자원봉사"){
-	          				location.href = "<%=contextPath%>/detail.vo?vno=" + $(this).children().eq(0).text();
+	          				location.href = "detail.vo?vno=" + $(this).children().eq(0).text();
 	          			}
 	          		})
 	          	})
@@ -124,7 +120,7 @@
 					페이징바--------------------------------------------------------------------------------------- 
 				-->
 				<br>
-				<div align="center" class="paging-area">
+				<%-- <div align="center" class="paging-area">
 				  <ul class="pagination justify-content-center" align="center">
 				  	<% if(currentPage != 1){ %>
 				    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/list.bo?currentPage=<%=currentPage-1%>">Previous</a></li>
@@ -146,7 +142,7 @@
 				    	<li class="page-item disabled"><a class="page-link" href="<%=contextPath%>/list.bo?currentPage=<%=currentPage%>">Next</a></li>
 				    <% } %>
 				  </ul>
-				</div>
+				</div> --%>
 	        </div>
 	        <jsp:include page="../common/footer.jsp"/>
 	      </div>

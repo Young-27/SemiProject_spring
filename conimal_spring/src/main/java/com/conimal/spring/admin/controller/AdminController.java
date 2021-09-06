@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.conimal.spring.board.model.vo.Board;
+import com.conimal.spring.board.service.BoardService;
 import com.conimal.spring.common.model.vo.PageInfo;
 import com.conimal.spring.common.template.Pagination;
 import com.conimal.spring.member.model.service.MemberService;
@@ -21,6 +23,8 @@ public class AdminController {
 	
 	@Autowired
 	private MemberService mService;
+	@Autowired
+	private BoardService bService;
 	
 	@RequestMapping("list.me")
 	public String selectMemberList(Model model, @RequestParam(value="currentPage", defaultValue="1") int currentPage){
@@ -39,7 +43,7 @@ public class AdminController {
 		return "admin/memberDetailView";
 	}
 	
-	@RequestMapping("update.adme")
+	@RequestMapping(value="update.adme", method=RequestMethod.POST)
 	public String updateMember(Model model, Member m, HttpSession session) {
 		if(m.getMemCode() == 2) { // 보호소라면
 			int result1 = mService.adminUpdateShelter(m);
@@ -74,8 +78,11 @@ public class AdminController {
 	}
 	
 	@RequestMapping("list.bo")
-	public String selectBoardList(Model model) {
-		ArrayList<Board> bList = bServcie.selectBoardList();
+	public String selectBoardList(Model model, 
+			@RequestParam(value="currentPage", defaultValue="1") int currentPage) {
+		int listCount = bService.selectListCount();
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 10);
+		ArrayList<Board> bList = bService.selectBoardList(pi);
 		return "admin/boardListBiew";
 	}
 	
