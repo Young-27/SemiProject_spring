@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reportMapper">
+
+	<resultMap id="reportResult" type="Report">
+		<result property="reportNo" column="report_no"/>
+		<result property="reportWriter" column="mem_id"/>
+		<result property="refBoardType" column="ref_board_type"/>
+		<result property="refBoardNo" column="ref_board_no"/>
+		<result property="cpostTitle" column="cpost_title"/>
+		<result property="adoptTitle" column="adopt_title"/>
+		<result property="animalTitle" column="an_title"/>
+		<result property="donationTitle" column="do_title"/>
+		<result property="volunteerTitle" column="vol_title"/>
+		<result property="reportReason" column="report_reason"/>
+		<result property="reportDate" column="report_date"/>
+	</resultMap>
+	
+	<select id="selectListCount" resultType="_int">
+		select count(*)
+		  from report
+	</select>
+	
+	<select id="selectReportList" resultMap="reportResult">
+        SELECT 
+	           R.REPORT_NO
+	         , MEM_ID
+	         , REF_BOARD_TYPE
+	         , REF_BOARD_NO
+	         , CPOST_TITLE
+	         , ADOPT_TITLE
+	         , AN_TITLE
+	         , DO_TITLE
+	         , VOL_TITLE
+	         , RE.REPORT_REASON
+	         , REPORT_DATE
+		  FROM REPORT R
+		  LEFT JOIN MEMBER M 			
+		  		 ON (R.MEM_NO = M.MEM_NO)
+		  LEFT JOIN REPORT_REASON RE 	
+		  		 ON (RE.REPORT_NO = R.REPORT_REASON)
+		  LEFT JOIN C_POST C 			
+		  		 ON (R.REF_BOARD_TYPE = C.REF_TYPE)
+		  LEFT JOIN ANIMAL AN 			
+		  		 ON (R.REF_BOARD_TYPE = AN.REF_TYPE)
+		  LEFT JOIN ADOPT A 			
+		  		 ON (R.REF_TYPE = A.REF_TYPE)
+		  LEFT JOIN DONATION D 		
+		  		 ON (R.REF_TYPE = D.REF_TYPE)
+		  LEFT JOIN VOLUNTEER V 		
+		  		 ON (R.REF_TYPE = V.REF_TYPE)
+		WHERE 
+			  REF_BOARD_NO = ADOPT_NO
+		   OR REF_BOARD_NO = AN_NO
+		   OR REF_BOARD_NO = CPOST_NO
+	   	   OR REF_BOARD_NO = DO_NO
+		   OR REF_BOARD_NO = VOL_NO
+		ORDER
+		   BY REPORT_DATE DESC
+	</select>
+</mapper>  

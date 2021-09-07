@@ -16,8 +16,8 @@ public class Report {
 	private String reportReason;			 // 신고 사유
 	private Date reportDate;		 		// 신고 날짜
 	private int memNo;
-private String refType; 
-private int reportNo;
+	private String refType; 
+	private int reportNo;
 
 
 	public Report() {}
