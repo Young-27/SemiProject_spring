@@ -70,8 +70,7 @@
 	</update>
 	
 	<delete id="adminDeleteMember">
-		update
-			   member
+		update member
 		   set 
 		   	   status = 'N'
 		 where 

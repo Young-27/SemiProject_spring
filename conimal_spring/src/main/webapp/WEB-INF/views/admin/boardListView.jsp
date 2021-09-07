@@ -19,7 +19,6 @@
     	float:right; 
     	margin: 0;
 		width: 900px;
-		float: right;
 	}
 </style>
 </head>
