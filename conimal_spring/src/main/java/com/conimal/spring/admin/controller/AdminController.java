@@ -96,6 +96,25 @@ public class AdminController {
 		return "redirect:/list.me";
 	}
 	
+	@RequestMapping("search.me")
+	public String searchMemberList(Model model, String keyword) {
+		int listCount = mService.searchListCount(keyword);
+		ArrayList<Member> mList = mService.searchMemberList(keyword);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("mList", mList);
+		return "admin/memberListView";
+	}
+	
+	@RequestMapping("search.bo")
+	public String searchBoardList(Model model, String keyword) {
+		int listCount = bService.searchListCount(keyword);
+		ArrayList<Board> bList = bService.searchBoardList(keyword);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("bList", bList);
+		return "admin/boardListView";
+	}
+	
+	
 	/**
 	 * @return 게시판 글 전체 조회
 	 */

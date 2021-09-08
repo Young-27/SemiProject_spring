@@ -41,7 +41,7 @@
 				-->
 				
 				<nav class="navbar navbar-dark justify-content-center">
-					<form class="form-inline" action="listSearch.me">
+					<form class="form-inline" action="search.me">
 						<div class="search">
 							<input type="text" name="keyword" class="form-control mr-sm-2" placeholder="검색할 아이디를 입력하세요" style="width:500px">
 							<button class="btn" type="submit" style="background-color: rgb(187, 208, 227)">검색</button>

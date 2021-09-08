@@ -78,4 +78,13 @@
 		ORDER
 		   BY B_DATE DESC
 	</select>	
+	
+	<select id="searchListCount" resultType="_int">
+		SELECT COUNT(*)
+		  FROM BOARD
+	</select>
+	
+	<select id="searchBoardList" resultMap="boardResult">
+		SELECT
+	</select>
 </mapper>	

@@ -28,4 +28,14 @@ public class BoardServiceImpl implements BoardService{
 		return bDao.selectBoardList(sqlSession, pi);
 	}
 
+	@Override
+	public ArrayList<Board> searchBoardList(String keyword) {
+		return bDao.searchBoardList(sqlSession, keyword);
+	}
+
+	@Override
+	public int searchListCount(String keyword) {
+		return bDao.searchListCount(sqlSession, keyword);
+	}
+
 }

@@ -30,8 +30,10 @@
 		<div class="container" id="list-area">
 	        <div data-text-content="true" style="font-size: 16px; font-weight: bold; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">통합 관리&gt; 게시판 글 조회</div>
 	        <div data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">게시판 글 조회</div>
+	        
+	        <%-- 검색 기능 --------------------------------------------------------------------------------- --%>
 			<nav class="navbar navbar-dark justify-content-center">
-				<form class="form-inline" action="listSearch.bo">
+				<form class="form-inline" action="search.bo">
 					<div class="search">
 						<input type="hidden" name="currentPage" value="1">
 						<input type="text" name="keyword" class="form-control mr-sm-2" placeholder="검색할 게시글 제목을 입력하세요" style="width:500px">

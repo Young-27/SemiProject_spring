@@ -10,4 +10,7 @@ public interface BoardService {
 	int selectListCount();
 	ArrayList<Board> selectBoardList(PageInfo pi);
 	
+	int searchListCount(String keyword);
+	ArrayList<Board> searchBoardList(String keyword);
+	
 }

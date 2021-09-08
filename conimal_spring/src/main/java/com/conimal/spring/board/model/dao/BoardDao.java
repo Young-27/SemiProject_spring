@@ -22,4 +22,14 @@ public class BoardDao {
 		return (ArrayList)sqlSession.selectList("boardMapper.selectBoardList", null, rowBounds);
 	}
 	
+	public int searchListCount(SqlSession sqlSession, String keyword) {
+		return sqlSession.selectOne("boardMapper.searchListCount", keyword);
+	}
+	
+	public ArrayList<Board> searchBoardList(SqlSession sqlSession, String keyword, PageInfo pi){
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("boardMapper.searchBoardList", keyword);
+	}
+	
 }
