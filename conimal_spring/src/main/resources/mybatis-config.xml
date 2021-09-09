@@ -10,12 +10,14 @@
 		<typeAlias type="com.conimal.spring.member.model.vo.Member" alias="Member"/>
 		<typeAlias type="com.conimal.spring.board.model.vo.Board" alias="Board"/>
 		<typeAlias type="com.conimal.spring.report.model.vo.Report" alias="Report"/>
+		<typeAlias type="com.conimal.spring.customer.model.vo.Customer" alias="Customer"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/board-mapper.xml"/>
 		<mapper resource="/mappers/report-mapper.xml"/>
+		<mapper resource="/mappers/customer-mapper.xml"/>
 	</mappers>
 
 </configuration>
