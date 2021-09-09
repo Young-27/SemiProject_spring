@@ -11,6 +11,6 @@ public interface BoardService {
 	ArrayList<Board> selectBoardList(PageInfo pi);
 	
 	int searchListCount(String keyword);
-	ArrayList<Board> searchBoardList(String keyword);
+	ArrayList<Board> searchBoardList(String keyword, PageInfo pi);
 	
 }

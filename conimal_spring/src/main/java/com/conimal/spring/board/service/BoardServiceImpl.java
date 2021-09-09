@@ -29,8 +29,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public ArrayList<Board> searchBoardList(String keyword) {
-		return bDao.searchBoardList(sqlSession, keyword);
+	public ArrayList<Board> searchBoardList(String keyword, PageInfo pi) {
+		return bDao.searchBoardList(sqlSession, keyword, pi);
 	}
 
 	@Override

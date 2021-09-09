@@ -14,6 +14,8 @@ import com.conimal.spring.board.model.vo.Board;
 import com.conimal.spring.board.service.BoardService;
 import com.conimal.spring.common.model.vo.PageInfo;
 import com.conimal.spring.common.template.Pagination;
+import com.conimal.spring.customer.model.service.CustomerService;
+import com.conimal.spring.customer.model.vo.Customer;
 import com.conimal.spring.member.model.service.MemberService;
 import com.conimal.spring.member.model.vo.Member;
 import com.conimal.spring.report.model.service.ReportService;
@@ -32,6 +34,8 @@ public class AdminController {
 	private BoardService bService;
 	@Autowired
 	private ReportService rService;
+	@Autowired
+	private CustomerService cService;
 	
 	/**
 	 * @return 회원 목록 조회
@@ -140,6 +144,17 @@ public class AdminController {
 		model.addAttribute("pi", pi);
 		model.addAttribute("rList", rList);
 		return "admin/reportListView";
+	}
+	
+	/**
+	 * @return 1:1문의 조회
+	 */
+	@RequestMapping("list.ca")
+	public String selectCustomerList(@RequestParam(value="currentPage", defaultValue="1") int currentPage) {
+		int listCount = cService.selectListCount();
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 10);
+		ArrayList<Customer> cList = cService.selectCustomerList(pi);
+		return "admin/customerListView";
 	}
 	
 }
