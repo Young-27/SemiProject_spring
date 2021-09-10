@@ -9,4 +9,6 @@ public interface CustomerService {
 
 	int selectListCount();
 	ArrayList<Customer> selectCustomerList(PageInfo pi);
+	Customer selectCustomerDetail(int cno);
+	
 }

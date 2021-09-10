@@ -1,25 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.kh.customer.model.vo.Customer" %>
-<% 
-	Customer c = (Customer)request.getAttribute("c");
-%>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    .outer{
-        height: 1200px;
-        width: 800px;
-        margin: auto;
-        margin-top: 50px;
-    }
-
     .customerDetail{
-        height: 100%;
-        width: 100%;
+        width: 900px;
+        float: right;
     }
 
     .customerDetail button{
@@ -29,7 +19,7 @@
     .answer-area{
         margin: auto;
         width: 80%;
-        height: 50%;
+        height: 400px;
         border: black solid 1px;
     }
     
@@ -45,61 +35,66 @@
 </style>
 </head>
 <body>
-	<%@ include file="../common/adminPageNavibar.jsp" %>
-    <%@ include file="../common/menubar.jsp" %>
-    <div class="outer">
-    	<br>
-        <div data-text-content="true" style="font-size: 16px; font-weight: bold; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">통합 관리&gt; 1:1문의</div>
-        <div data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">1:1문의</div>
-        <br>
+
+	<jsp:include page="../common/header.jsp"/>
+	
+    <div class="outer" align="center">
+    
+    	<jsp:include page="../common/adminPageNavibar.jsp"/>
+    	<div class="customerDetail" align="left">
+    		<br>
+    		<span data-text-content="true" style="font-size: 16px; font-weight: bold; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">통합 관리&gt; 1:1문의</span>
+	        <br>
+	        <span data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">1:1문의</span>
+	        <br>
     	
-        <a href="<%=contextPath%>/list.ca?currentPage=1" class="btn btn-float" style="background-color: rgb(187, 208, 227)">목록</a>
-        <br><br>
-        <div class="customerDetail">
+	        <a href="list.ca?currentPage=1" class="btn btn-float" style="background-color: rgb(187, 208, 227)">목록</a>
+	        <br><br>
 
             <table id="customerAnswer" class="text-center" border="1" align="center">
                 <tr>
-                    <th>작성자 아이디</th>
-                    <td width="400px"><%=c.getQueId() %></td>
+                    <th width="150px" height="50px">작성자 아이디</th>
+                    <td width="400px">${ c.queId }</td>
                 </tr>
                 <tr>
-                    <th >문의 제목</th>
+                    <th width="150px" height="50px">문의 제목</th>
                     <td width="400px">
-                    	<%=c.getQueTitle() %>
+                    	${ c.queTitle }
                     </td>
                 </tr>
                 <tr>
-                    <th>문의 내용</th>
+                    <th width="150px" height="50px">문의 내용</th>
                     <td width="400px" height="200px">
-                    	<%=c.getQueContent() %>
+                    	${ c.queContent }
                     </td>
                 </tr>
             </table>
 
             <br>
             <h3 style="font-weight: bold; font-size: 25px; color: rgb(127, 127, 127); margin-left: 150px;">문의 답변 작성</h3>
-            	<div class="answer-area" border="1" position:relative >
-                    
-            		<%if(c.getAnsStatus().equals("N")){ %>
-            			<br><br><br>
-            			<div align="center">
-	                    	등록된 답변이 없습니다. 
+            	<div class="answer-area" border="1">
+            		<c:choose>
+	                    <c:when test="${ c.ansStatus eq 'N'}">
+	                    	<br><br><br>
+	            			<div align="center">
+		                    	등록된 답변이 없습니다. <br><br> 
+		                    	<a href="updateForm.an?cno=${ c.queNo }" class="btn" id="enrollAnswer-btn" style="background-color: rgb(187, 208, 227)">답변등록하기</a>
+	                        </div>
 	                        <br><br>
-	                        <a href="<%=contextPath%>/updateForm.an?cno=<%=c.getQueNo()%>" class="btn" id="enrollAnswer-btn" style="background-color: rgb(187, 208, 227)">답변등록하기</a>
-                        </div>
-                    <% }else{ %>
-            			<%=c.getAnsContent() %>
-            		<% } %>
-            		
+	                    </c:when>
+	                    <c:otherwise>
+	                    	${ c.ansContent }
+	                    </c:otherwise> 
+                    </c:choose>
             	</div>
             
             <br><br>
-        	<a href="<%=contextPath%>/updateForm.an?cno=<%=c.getQueNo()%>" class="btn btn-float" style="background-color: rgb(187, 208, 227)">수정</a>
+            <c:if test="${ c.ansStatus eq 'Y'}">
+        		<a href="updateForm.an?cno=${ cno }" class="btn btn-float" style="background-color: rgb(187, 208, 227)">수정</a>
+        	</c:if>
         </div>
-        
-        
-        
+        <jsp:include page="../common/footer.jsp"/>
     </div>
-    <%@ include file="../common/footerbar.jsp" %>
+    
 </body>
 </html>

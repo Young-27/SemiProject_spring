@@ -8,6 +8,7 @@
 		<result property="queId" column="que_id"/>
 		<result property="queTitle" column="que_title"/>
 		<result property="queContent" column="que_content"/>
+		<result property="queDate" column="que_date"/>
 		<result property="ansStatus" column="ans_status"/>
 		<result property="ansContent" column="ans_content"/>
 		<result property="ansDate" column="ans_date"/>
@@ -19,7 +20,33 @@
 	</select>
 	
 	<select id="selectCustomerList" resultMap="customerResult">
-		select *
+		select 
+			   que_no
+			 , mem_id as que_id
+			 , que_title
+			 , que_content
+			 , que_date
+			 , ans_status
+			 , ans_content
+			 , ans_date
 		  from customer
+		  join member on (que_id = mem_no)
+		 order
+		    by que_date desc
+	</select>
+	
+	<select id="selectCustomerDetail" resultMap="customerResult">
+		select
+			   que_no
+			 , mem_id as que_id
+			 , que_title
+			 , que_content
+			 , que_date
+			 , ans_status
+			 , ans_content
+			 , ans_date
+		  from customer
+		  join member on (que_id = mem_no)
+		 where que_no = #{cno}
 	</select>
 </mapper>

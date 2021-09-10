@@ -25,5 +25,10 @@ public class CustomerServiceImpl implements CustomerService{
 	public ArrayList<Customer> selectCustomerList(PageInfo pi){
 		return cDao.selectCustomerList(sqlSession, pi);
 	}
+
+	@Override
+	public Customer selectCustomerDetail(int cno) {
+		return cDao.selectCustomerDetail(sqlSession, cno);
+	}
 	
 }

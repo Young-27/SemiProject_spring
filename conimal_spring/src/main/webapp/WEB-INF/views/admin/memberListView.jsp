@@ -35,11 +35,6 @@
 		        <br>
 		        <span data-text-content="true" style="font-weight: bold; font-size: 32px; color: rgb(127, 127, 127);" class="text-left" spellcheck="false">회원 조회</span>
 				
-				<!-- 
-					회원 검색기능--------------------------------------------------------------------------------------- 
-				    http://localhost:8888/conimal/list.me?search_op=id&keyword=dd
-				-->
-				
 				<nav class="navbar navbar-dark justify-content-center">
 					<form class="form-inline" action="search.me">
 						<div class="search">
@@ -51,49 +46,49 @@
 		
 		        <br>
 			
-				<div id=list-area class=table-responsive-sm>
+				<div id="list-area" class="table-responsive-sm">
 					<table border="1" class="list-area table table-bordered" align="center">
-							<thead class="thead-light text-center">
+						<thead class="thead-light text-center">
+							<tr>
+								<th>No</th>
+								<th>회원정보</th>
+								<th>아이디</th>
+								<th>이름</th>
+								<th>이메일</th>
+								<th>가입일</th>
+							<tr>
+						</thead>
+						<tbody class="text-center">
+							<c:if test="${ mList.isEmpty() }">
 								<tr>
-									<th>No</th>
-									<th>회원정보</th>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>이메일</th>
-									<th>가입일</th>
-								<tr>
-							</thead>
-							<tbody class="text-center">
-								<c:if test="${ mList.isEmpty() }">
+									<td colspan="6">조회된 회원이 없습니다.</td>
+								</tr>
+							</c:if>
+							<c:if test="${ !mList.isEmpty() }">
+								<c:forEach var="m" items="${ mList }">
 									<tr>
-										<td colspan="6">조회된 회원이 없습니다.</td>
+										<td>${ m.memNo }</td>
+										<td>
+											<c:choose>
+												<c:when test="${ m.memCode == 1 }">
+													관리자
+												</c:when>
+												<c:when test="${ m.memCode == 2 }">
+													보호소
+												</c:when>
+												<c:otherwise>
+													일반회원
+												</c:otherwise>
+											</c:choose>
+										</td>
+										<td>${ m.memId }</td>
+										<td>${ m.memName }</td>
+										<td>${ m.email }</td>
+										<td>${ m.enrollDate }</td>
 									</tr>
-								</c:if>
-								<c:if test="${ !mList.isEmpty() }">
-									<c:forEach var="m" items="${ mList }">
-										<tr>
-											<td>${ m.memNo }</td>
-											<td>
-												<c:choose>
-													<c:when test="${ m.memCode == 1 }">
-														관리자
-													</c:when>
-													<c:when test="${ m.memCode == 2 }">
-														보호소
-													</c:when>
-													<c:otherwise>
-														일반회원
-													</c:otherwise>
-												</c:choose>
-											</td>
-											<td>${ m.memId }</td>
-											<td>${ m.memName }</td>
-											<td>${ m.email }</td>
-											<td>${ m.enrollDate }</td>
-										</tr>
-									</c:forEach>
-								</c:if>	
-							</tbody>
+								</c:forEach>
+							</c:if>	
+						</tbody>
 					</table>
 					
 				</div>

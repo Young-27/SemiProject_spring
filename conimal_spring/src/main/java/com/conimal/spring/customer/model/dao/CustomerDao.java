@@ -22,4 +22,8 @@ public class CustomerDao {
 		return (ArrayList)sqlSession.selectList("customerMapper.selectCustomerList", null, rowBounds);
 	}
 	
+	public Customer selectCustomerDetail(SqlSession sqlSession, int cno) {
+		return sqlSession.selectOne("customerMapper.selectCustomerDetail", cno);
+	}
+	
 }

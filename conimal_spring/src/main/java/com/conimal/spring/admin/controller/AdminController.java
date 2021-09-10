@@ -100,23 +100,19 @@ public class AdminController {
 		return "redirect:/list.me";
 	}
 	
-	@RequestMapping("search.me")
-	public String searchMemberList(Model model, String keyword) {
-		int listCount = mService.searchListCount(keyword);
-		ArrayList<Member> mList = mService.searchMemberList(keyword);
-		model.addAttribute("keyword", keyword);
-		model.addAttribute("mList", mList);
-		return "admin/memberListView";
-	}
-	
-	@RequestMapping("search.bo")
-	public String searchBoardList(Model model, String keyword) {
-		int listCount = bService.searchListCount(keyword);
-		ArrayList<Board> bList = bService.searchBoardList(keyword);
-		model.addAttribute("keyword", keyword);
-		model.addAttribute("bList", bList);
-		return "admin/boardListView";
-	}
+	/*
+	 * @RequestMapping("search.me") public String searchMemberList(Model model,
+	 * String keyword) { int listCount = mService.searchListCount(keyword);
+	 * ArrayList<Member> mList = mService.searchMemberList(keyword);
+	 * model.addAttribute("keyword", keyword); model.addAttribute("mList", mList);
+	 * return "admin/memberListView"; }
+	 * 
+	 * @RequestMapping("search.bo") public String searchBoardList(Model model,
+	 * String keyword) { int listCount = bService.searchListCount(keyword);
+	 * ArrayList<Board> bList = bService.searchBoardList(keyword);
+	 * model.addAttribute("keyword", keyword); model.addAttribute("bList", bList);
+	 * return "admin/boardListView"; }
+	 */
 	
 	
 	/**
@@ -150,11 +146,35 @@ public class AdminController {
 	 * @return 1:1문의 조회
 	 */
 	@RequestMapping("list.ca")
-	public String selectCustomerList(@RequestParam(value="currentPage", defaultValue="1") int currentPage) {
+	public String selectCustomerList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
+			Model model) {
 		int listCount = cService.selectListCount();
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 10);
 		ArrayList<Customer> cList = cService.selectCustomerList(pi);
+		model.addAttribute("pi", pi);
+		model.addAttribute("cList", cList);
 		return "admin/customerListView";
 	}
+	
+	/**
+	 * @return 1:1 문의 상세 조회
+	 */
+	@RequestMapping("detail.ca")
+	public String selectCustomerDetail(int cno, Model model) {
+		Customer c = cService.selectCustomerDetail(cno);
+		model.addAttribute("cno", cno);
+		model.addAttribute("c", c);
+		return "admin/customerDetailView";
+	}
+	
+	@RequestMapping("updateForm.an")
+	public String answerUpdateForm(int cno, Model model) {
+		Customer c = cService.selectCustomerDetail(cno);
+		model.addAttribute("c", c);
+		model.addAttribute("cno", cno);
+		return "admin/customerAnswerUpdateForm";
+	}
+	
+	
 	
 }
