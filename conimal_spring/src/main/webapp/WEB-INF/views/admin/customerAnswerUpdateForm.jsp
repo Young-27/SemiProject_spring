@@ -22,6 +22,7 @@
         width: 80%;
         height: 400px;
         border: black solid 1px;
+        margin-left: 100px;
     }
     
     .btn-float{
@@ -70,19 +71,17 @@
             <br>
 
             <h3 style="font-weight: bold; font-size: 25px; color: rgb(127, 127, 127); margin-left: 150px;">문의 답변 작성</h3>
-                
-           	<div class="answer-area" border="1">
-				<form action="update.ca" method="post">
+            <form action="update.ca" method="post">    
+	           	<div>
 					<input type="hidden" name="cno" value="${ cno }">
-					<textarea name="ansContent" cols="88" rows="20" style="resize: none;">${ c.ansContent }</textarea>
-					         
+					<textarea class="answer-area" name="ansContent" style="resize: none;">${ c.ansContent }</textarea>
 					<div class="button-area" align="center">
+						<br>
 						<button type="reset" class="btn" style="background-color: lightgray">초기화</button>
 						<button type="submit" class="btn" style="background-color: rgb(187, 208, 227)">등록</button>
 					</div>
-				</form>
-                   
-           	</div>
+	           	</div>
+           	</form>
         </div>
         <br><br>
         <jsp:include page="../common/footer.jsp"/>
